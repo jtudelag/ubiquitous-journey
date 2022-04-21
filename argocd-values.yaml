@@ -12,13 +12,13 @@ secrets:
     password: 'pass1234'
     sshPrivateKey: ''
 
-argocd_cr:
-  repositoryCredentials: |
-    - url: https://gitlab-ce.apps.openshift-498-bd8hw.do500.redhatlabs.dev
-      type: git
-      passwordSecret:
-        key: password
-        name: git-auth
-      usernameSecret:
-        key: username
-        name: git-auth
+#argocd_cr:
+#  repositoryCredentials: |
+#    - url: https://gitlab-ce.apps.openshift-498-bd8hw.do500.redhatlabs.dev
+#      type: git
+#      passwordSecret:
+#        key: password
+#        name: git-auth
+#      usernameSecret:
+#        key: username
+#        name: git-auth
