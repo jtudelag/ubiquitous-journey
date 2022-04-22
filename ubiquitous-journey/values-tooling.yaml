@@ -79,9 +79,10 @@ applications:
       # namespace must exist, so we use labs-ci-cd by default.
       namespace: *ci_cd
       # Dont touch the security context values, deployment will fail in OpenShift otherwise.
-      securityContext:
-        runAsUser: ""
-        fsGroup: ""
+      podSecurityContext:
+        fsGroup:
+      containerSecurityContext:
+        runAsUser:
       commandArgs:
         - "--update-status=true"
 
