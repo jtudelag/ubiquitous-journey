@@ -3,7 +3,7 @@ release: "pm"
 applications:
   # Wekan
   - name: wekan
-    enabled: true
+    enabled: false
     source: https://github.com/wekan/wekan.git
     source_path: helm/wekan
     source_ref: "v4.41"
@@ -23,7 +23,7 @@ applications:
         enabled: true
   # Mattermost
   - name: mattermost
-    enabled: true
+    enabled: false
     source: https://github.com/mattermost/mattermost-helm.git
     source_path: charts/mattermost-team-edition
     source_ref: "mattermost-team-edition-3.16.0"
@@ -36,14 +36,14 @@ applications:
         mysqlPassword: "matterpass"
   # Etherpad
   - name: etherpad
-    enabled: true
+    enabled: false
     source: https://github.com/redhat-cop/helm-charts.git
     source_path: charts/etherpad
     source_ref: "etherpad-0.0.7"
 
   # Owncloud
   - name: owncloud
-    enabled: true
+    enabled: false
     source: https://github.com/redhat-cop/helm-charts.git
     source_path: charts/owncloud
     source_ref: "owncloud-0.0.2"
@@ -60,7 +60,7 @@ applications:
 
   # Hashicorp Vault
   - name: vault
-    enabled: true
+    enabled: false
     source: https://github.com/hashicorp/vault-helm.git
     source_path: .
     source_ref: "v0.7.0"

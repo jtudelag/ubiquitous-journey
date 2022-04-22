@@ -3,7 +3,7 @@ release: "cluster-ops"
 applications:
   # Prune OpenShift Images
   - name: prune-images
-    enabled: true
+    enabled: false
     source: https://github.com/redhat-cop/openshift-management.git
     source_path: charts/cronjob-prune-images/
     source_ref: "v3.11.8"
@@ -11,7 +11,7 @@ applications:
       namespace: *ops_ns
   # Prune OpenShift Builds
   - name: prune-builds
-    enabled: true
+    enabled: false
     source: https://github.com/redhat-cop/openshift-management.git
     source_path: charts/cronjob-prune-builds-deployments/
     source_ref: "master"
@@ -20,7 +20,7 @@ applications:
       prune_type: builds
   # Prune OpenShift Deployments
   - name: prune-deployments
-    enabled: true
+    enabled: false
     source: https://github.com/redhat-cop/openshift-management.git
     source_path: charts/cronjob-prune-builds-deployments/
     source_ref: "master"
