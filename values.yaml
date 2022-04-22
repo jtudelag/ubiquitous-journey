@@ -1,5 +1,5 @@
 # Tell ArgoCD where to find the ubiquitous-journey project
-source: https://github.com/rht-labs/ubiquitous-journey.git
+source: https://github.com/jtudelag/ubiquitous-journey.git
 team: labs
 release: ci-cd
 
@@ -8,6 +8,7 @@ applications:
   - name: ubiquitous-journey
     enabled: true
     source_path: "."
+    source_ref: fiware-residency
     helm_values:
       - ubiquitous-journey/values-tooling.yaml
 
