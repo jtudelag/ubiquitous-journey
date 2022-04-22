@@ -71,6 +71,7 @@ applications:
   - name: sealed-secrets-controller
     enabled: true
     source: https://bitnami-labs.github.io/sealed-secrets
+    chart_name: sealed-secrets
     source_ref: "2.1.6"
     values:
       nameOverride: sealed-secrets
