@@ -1,8 +1,8 @@
 
 # gloabl vars
 ci_cd_namespace: &ci_cd "labs-ci-cd"
-pm_namespace: &pm "labs-pm"
-ops_namespace: &ops "labs-cluster-ops"
+#pm_namespace: &pm "labs-pm"
+#ops_namespace: &ops "labs-cluster-ops"
 dev_namespace: &dev "labs-dev"
 test_namespace: &test "labs-test"
 staging_namespace: &stage "labs-staging"
@@ -24,10 +24,10 @@ applications:
         - name: labs-admins
           kind: Group
           role: admin
-        - name: jenkins
-          kind: ServiceAccount
-          role: admin
-          namespace: *ci_cd
+        #- name: jenkins
+        #  kind: ServiceAccount
+        #  role: admin
+        #  namespace: *ci_cd
       namespaces:
         - name: *ci_cd
           bindings: *binds
@@ -41,17 +41,11 @@ applications:
         - name: *stage
           bindings: *binds
           operatorgroup: true
-        # optional extra namespaces for cluster ops and PM tools
-        - name: *pm
-          bindings: *binds
-          operatorgroup: false
-        - name: *ops
-          bindings: *binds
-          operatorgroup: false
+
 
   # Jenkins
   - name: jenkins
-    enabled: true
+    enabled: false
     source: https://github.com/redhat-cop/helm-charts.git
     source_path: charts/jenkins
     source_ref: "jenkins-1.0.6"
@@ -64,7 +58,7 @@ applications:
 
   # Nexus
   - name: nexus
-    enabled: true
+    enabled: false
     source: https://redhat-cop.github.io/helm-charts
     chart_name: sonatype-nexus
     source_ref: "1.1.2"
@@ -73,7 +67,7 @@ applications:
         name: nexus
 
   # Sealed Secrets Controller
-  # Note you can only have one of these per cluster so be careful 
+  # Note you can only have one of these per cluster so be careful
   - name: sealed-secrets-controller
     enabled: true
     source: https://bitnami-labs.github.io/sealed-secrets
@@ -110,10 +104,10 @@ applications:
           data:
             username: <YOUR_SEALED_SECRET_USERNAME>
             password: <YOUR_SEALED_SECRET_PASSWORD>
-  
+
   # Sonarqube
   - name: sonarqube
-    enabled: true
+    enabled: false
     source: https://redhat-cop.github.io/helm-charts
     chart_name: sonarqube
     source_ref: "0.0.17"
@@ -130,7 +124,7 @@ applications:
 
   # CodeReady Workspaces
   - name: crw
-    enabled: true
+    enabled: false
     destination: crw
     source: https://github.com/rht-labs/refactored-adventure
     source_path: crw/base
@@ -140,7 +134,7 @@ applications:
 
   # Zalenium
   - name: zalenium
-    enabled: true
+    enabled: false
     source: https://github.com/zalando/zalenium.git
     source_path: charts/zalenium
     source_ref: "master"
@@ -165,15 +159,15 @@ applications:
 
   # Pact-broker
   - name: pact-broker
-    enabled: true
+    enabled: false
     source: https://redhat-cop.github.io/helm-charts
     source_ref: "0.0.8"
     values:
       # update the passwords :)
- 
+
    # Hoverfly
   - name: hoverfly
-    enabled: true
+    enabled: false
     source: https://github.com/helm/charts.git
     source_path: incubator/hoverfly
     source_ref: "master"
