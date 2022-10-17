@@ -5,20 +5,22 @@ ignoreHelmHooks: false
 namespaces:
  - labs-ci-cd
 
-# example
-secrets:
-  - name: git-auth
-    username: 'user'
-    password: 'pass1234'
-    sshPrivateKey: ''
+operator: false
 
-argocd_cr:
-  repositoryCredentials: |
-    - url: https://gitlab-ce.apps.openshift-498-bd8hw.do500.redhatlabs.dev
-      type: git
-      passwordSecret:
-        key: password
-        name: git-auth
-      usernameSecret:
-        key: username
-        name: git-auth
+# example
+#secrets:
+#  - name: git-auth
+#    username: 'user'
+#    password: 'pass1234'
+#    sshPrivateKey: ''
+
+#argocd_cr:
+#  repositoryCredentials: |
+#    - url: https://gitlab-ce.apps.openshift-498-bd8hw.do500.redhatlabs.dev
+#      type: git
+#      passwordSecret:
+#        key: password
+#        name: git-auth
+#      usernameSecret:
+#        key: username
+#        name: git-auth
