@@ -11,7 +11,7 @@ staging_namespace: &stage "labs-staging"
 applications:
   # Bootstrap Project
   - name: bootstrap
-    enabled: true
+    enabled: false
     source: https://redhat-cop.github.io/helm-charts
     chart_name: bootstrap-project
     source_ref: "1.0.1"
@@ -49,9 +49,29 @@ applications:
           bindings: *binds
           operatorgroup: false
 
+  
+  # External Secret OpenShift Operator
+  - name: external-secrets-ocp-operator
+    enabled: true
+    source: https://redhat-cop.github.io/helm-charts
+    chart_name: operatorhub
+    source_ref: "0.0.10"
+    values:
+      namespace: openshift-operators
+      operators:
+        - name: external-secrets-operator
+          subscription:
+            channel: stable
+            approval: Automatic
+            operatorName: external-secrets-operator
+            sourceName: community-operators
+            sourceNamespace: openshift-marketplace
+          operatorgroup:
+            create: false
+            
   # Jenkins
   - name: jenkins
-    enabled: true
+    enabled: false
     source: https://github.com/redhat-cop/helm-charts.git
     source_path: charts/jenkins
     source_ref: "jenkins-1.0.7"
@@ -64,7 +84,7 @@ applications:
 
   # Nexus
   - name: nexus
-    enabled: true
+    enabled: false
     source: https://redhat-cop.github.io/helm-charts
     chart_name: sonatype-nexus
     source_ref: "1.1.4"
@@ -75,7 +95,7 @@ applications:
   # Sealed Secrets Controller
   # Note you can only have one of these per cluster so be careful 
   - name: sealed-secrets-controller
-    enabled: true
+    enabled: false
     chart_name: sealed-secrets
     source: https://bitnami-labs.github.io/sealed-secrets
     source_ref: "2.1.6"
@@ -115,7 +135,7 @@ applications:
   
   # Sonarqube
   - name: sonarqube
-    enabled: true
+    enabled: false
     source: https://redhat-cop.github.io/helm-charts
     chart_name: sonarqube
     source_ref: "0.1.0"
@@ -132,7 +152,7 @@ applications:
 
   # CodeReady Workspaces
   - name: crw
-    enabled: true
+    enabled: false
     destination: crw
     source: https://github.com/rht-labs/refactored-adventure
     source_path: crw/base
@@ -142,7 +162,7 @@ applications:
 
   # Zalenium
   - name: zalenium
-    enabled: true
+    enabled: false
     source: https://github.com/zalando/zalenium.git
     source_path: charts/zalenium
     source_ref: "master"
@@ -151,9 +171,9 @@ applications:
         serviceType: ClusterIP
         openshift:
           deploymentConfig:
-            enabled: true
+            enabled: false
           route:
-            enabled: true
+            enabled: false
             tls:
               termination: edge
               insecureEdgeTerminationPolicy: Redirect
@@ -167,7 +187,7 @@ applications:
 
   # Pact-broker
   - name: pact-broker
-    enabled: true
+    enabled: false
     source: https://redhat-cop.github.io/helm-charts
     source_ref: "0.0.8"
     values:
@@ -175,7 +195,7 @@ applications:
  
    # Hoverfly
   - name: hoverfly
-    enabled: true
+    enabled: false
     source: https://github.com/helm/charts.git
     source_path: incubator/hoverfly
     source_ref: "master"
@@ -185,10 +205,10 @@ applications:
       openshift:
         route:
           admin:
-            enabled: true
+            enabled: false
             hostname: ''
           proxy:
-            enabled: true
+            enabled: false
             hostname: ''
 
 ###########################################
