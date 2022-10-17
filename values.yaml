@@ -13,7 +13,7 @@ applications:
 
   # Test app of app
   - name: test-app-of-pb
-    enabled: true
+    enabled: false
     source_path: "."
     helm_values:
       - pet-battle/test/values.yaml
