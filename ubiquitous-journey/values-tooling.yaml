@@ -52,7 +52,7 @@ applications:
   
   # External Secret OpenShift Operator
   - name: external-secrets-ocp-operator
-    enabled: true
+    enabled: false
     source: https://redhat-cop.github.io/helm-charts
     chart_name: operatorhub
     source_ref: "0.0.10"

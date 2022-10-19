@@ -1,0 +1,22 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  creationTimestamp: "2022-10-09T08:37:18Z"
+  generation: 1
+  labels:
+    operators.coreos.com/openshift-gitops-operator.openshift-operators: ""
+  name: openshift-gitops-operator
+  namespace: openshift-operators
+  resourceVersion: "912761"
+  uid: 1f69f0eb-1256-41a5-a46c-380d47cdbe11
+spec:
+  channel: gitops-1.6
+  installPlanApproval: Automatic
+  name: openshift-gitops-operator
+  source: redhat-operators
+  sourceNamespace: openshift-marketplace
+  startingCSV: openshift-gitops-operator.v1.6.1
+  config:
+    env:
+    - name: ARGOCD_CLUSTER_CONFIG_NAMESPACES
+      value: labs-ci-cd
